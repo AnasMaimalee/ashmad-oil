@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oil Meals & Cook Items</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fefefe;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Header */
+        header {
+            background: #1b1b1b;
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f9c846;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f9c846;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1606914469416-79eae29a7b16?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1b1b1b;
+        }
+
+        .product-gallery {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product-item {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+        }
+
+        section p,
+        section ul {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Alternating sections */
+        section:nth-of-type(even) {
+            background: #f5f5f5;
+        }
+
+        /* Footer */
+        footer {
+            background: #1b1b1b;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            background-color: transparent;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ceo-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .ceo-image img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ceo-info {
+            max-width: 600px;
+        }
+
+        .ceo-info h3 {
+            margin-top: 0.5rem;
+            font-size: 1.5rem;
+            color: #f9c846;
+        }
+
+        .ceo-info p {
+            margin-top: 0.5rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                display: none;
+                background: #333;
+                position: absolute;
+                right: 0;
+                top: 60px;
+                width: 100%;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Ashmad Oil</div>
+            <nav id="navbar">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#product">Product</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to ASHMAD OIL MEALS & COOK ITEMS CONCEPT</h1>
+            <p>Delicious, healthy meals start with quality oils and ingredients. Cook with confidence, flavor, and
+                heart.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>
+                At Oil Meals & Cook Items, we're passionate about serving delicious, healthy meals that bring people
+                together.
+                Our mission is to provide high-quality cooking oils and meal solutions that make cooking easier,
+                tastier, and more enjoyable.
+            </p>
+            <br />
+            <p>
+                Born out of a love for good food and cooking, our brand was founded to support individuals and families
+                with the finest ingredients.
+                We believe that cooking is about more than food — it's about culture, connection, and care.
+            </p>
+        </div>
+    </section>
+
+    <section id="product">
+        <div class="container">
+            <h2>Our Products</h2>
+            <p>We offer a range of high-quality cooking essentials, including:</p>
+            <ul>
+                <li><strong>Cooking Oils:</strong> Carefully selected from the best producers to enhance flavor and
+                    nutrition.</li>
+                <li><strong>Meal Ingredients:</strong> Fresh, versatile, and easy-to-use ingredients for home-cooked
+                    meals.</li>
+            </ul>
+
+            <div class="product-gallery">
+                <div class="product-item">
+                    <img src="images/first.jpeg" alt="Cooking Oil" />
+                    <p><strong>Premium Cooking Oil</strong><br />Enhances flavor and nutrition in every dish.</p>
+                </div>
+                <div class="product-item">
+                    <img src="images/second.jpeg" alt="Meal Ingredients" />
+                    <p><strong>Fresh Meal Ingredients</strong><br />Sourced for quality, freshness, and taste.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p><strong>📍 Location:</strong> No. 977 Sabuwar Mandawari, Sheka Yar Kasuwa, Kano State</p>
+            <p><strong>✉️ Email:</strong> <a href="mailto:ashmadoilmealsltd@gmail.com">ashmadoilmealsltd@gmail.com</a>
+            </p>
+            <p><strong>📲 Call:</strong> <a href="tel:08140174927">08140174927</a></p>
+            <p><strong>💬 WhatsApp:</strong> <a href="https://wa.me/2348140174927" target="_blank">Chat on WhatsApp</a>
+            </p>
+            <p>We’re here to answer your questions and assist you — don’t hesitate to reach out!</p>
+        </div>
+    </section>
+    <section id="ceo">
+        <div class="container ceo-section">
+            <div class="ceo-image">
+                <img src="images/ceo.png" alt="Mubarak Adam - CEO of Ashmad Oil Meals" />
+            </div>
+            <div class="ceo-info">
+                <h2>Meet Our CEO</h2>
+                <h3>Mubarak Adam</h3>
+                <p>
+                    Mubarak Adam, the Chief Executive Officer of <strong>Ashmad Oil Meals & Cook Items Concept</strong>,
+                    brings visionary leadership and expertise to drive the company’s mission.
+                    With a passion for culinary innovation and customer satisfaction, he oversees the development of
+                    high-quality cooking oils and cook items.
+                </p>
+                <p>
+                    Under Mubarak’s leadership, Ashmad Oil Meals & Cook Items Concept is poised for success, driven by a
+                    strong commitment to <strong>quality, innovation</strong>, and <strong>customer
+                        satisfaction</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Oil Meals & Cook Items. All rights reserved.</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/2348140174927" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <img src="https://img.icons8.com/ios-filled/50/25D366/whatsapp.png" alt="WhatsApp Chat" />
+    </a>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
